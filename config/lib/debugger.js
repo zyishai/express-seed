@@ -45,4 +45,4 @@ if (config.debug) {
   debugFns.logAppInfo.color = debug.colors[0] // cyan
 }
 
-module.exports = merge(stubs, debugFns)
+module.exports = {...stubs, ...debugFns}
