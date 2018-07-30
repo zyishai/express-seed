@@ -32,7 +32,6 @@
     "express-session": "^1.15.6",
     "glob": "^7.1.2",
     "helmet": "^3.13.0",
-    "lodash": "^4.17.10",
     "lusca": "^1.6.0",
     "method-override": "^3.0.0",
     "module-alias": "^2.1.0",
