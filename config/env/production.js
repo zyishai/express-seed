@@ -12,8 +12,7 @@ module.exports = {
         autoIndex: false,
         poolSize: 10,
         user: process.env.MONGO_USER,
-        pass: process.env.MONGO_PASS,
-        useMongoClient: true
+        pass: process.env.MONGO_PASS
       },
       debug: false
     }
