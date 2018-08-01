@@ -1,22 +1,20 @@
-const fs = require('fs')
-const path = require('path')
+const {readdir} = require('fs')
+const {join} = require('path')
+const {promisify} = require('util')
 
-module.exports = (app) => {
-  return new Promise((resolve, reject) => {
-    let routesDirPath = path.join(__dirname, 'routes')
+const readdirAsync = promisify(readdir)
 
-    // load all routes to app
-    fs.readdir(routesDirPath, (err, routes) => {
-      if (err) {
-        err.path = routesDirPath
-        reject(err)
-      }
+module.exports = (app) => {  
+  let routesDirPath = join(__dirname, 'routes')
 
-      for (let route of routes) {
-        require(path.join(routesDirPath, route))(app)
-      }
+  try {
+    const routes = readdirAsync(routesDirPath)
 
-      resolve()
-    })
-  })
+    for (let route of routes) {
+      require(path.join(routesDirPath, route))(app)
+    }
+  } catch (err) {
+    err.path = routesDirPath
+    throw err
+  }  
 }
