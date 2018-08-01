@@ -11,6 +11,7 @@
 
 const config = require('@app-config')
 const debug = require('debug')
+const { merge } = require('lodash')
 
 const stubs = {
   logHttpSuccess: () => {},
@@ -29,12 +30,11 @@ let debugFns = {
 }
 
 if (config.debug) {
-  debugFns = {
-    ...debugFns, 
+  debugFns = merge(debugFns, {
     logAppDebug: debug('app:debug'),
     logAppVerbose: debug('app:verbose'),
     logAppInfo: debug('app:info')
-  }
+  })
 
   // set log type colors
   debugFns.logHttpSuccess.color = debug.colors[2] // green
@@ -45,4 +45,4 @@ if (config.debug) {
   debugFns.logAppInfo.color = debug.colors[0] // cyan
 }
 
-module.exports = {...stubs, ...debugFns}
+module.exports = merge(stubs, debugFns)

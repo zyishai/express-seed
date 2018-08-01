@@ -1,6 +1,6 @@
+const path = require('path')
+const { isError } = require('lodash')
 const stringify = require('stringify-object')
-
-const isError = (e) => e instanceof Error
 
 /**
  * Parse error stack and return basic information about error.

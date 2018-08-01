@@ -1,4 +1,6 @@
+const path = require('path')
 const config = require('@app-config')
+const { merge } = require('lodash')
 const winston = require('winston')
 const { combine } = winston.format
 const DebugTransport = require('./transports/DebugTransport')
@@ -32,31 +34,28 @@ const customLevels = {
  *      myName: 'person'
  *    })
  */
-const logger = winston.createLogger({
+const logger = winston.createLogger(merge({
   levels: customLevels.levels,
   transports: [
     // for levels `warn` and `error`
-    new (winston.transports.DailyRotateFile)({
+    new (winston.transports.DailyRotateFile)(merge({
       format: combine(
         winston.format.splat(),
         customTimestamp(),
         customFileFormat
-      ),
-      ...config.log.rotateFile
-    })
+      )
+    }, config.log.rotateFile))
   ],
   exceptionHandlers: [
-    new winston.transports.File({
+    new winston.transports.File(merge({
       format: combine(
         winston.format.splat(),
         customTimestamp(),
         customFileFormat
-      ),
-      ...config.log.uncaughtExceptionFile
-    })
+      )
+    }, config.log.uncaughtExceptionFile))
   ],
-  ...config.log.options
-})
+}, config.log.options))
 
 // attach success and fail streams to logger
 require('./streams/morganStreams')(logger)
@@ -64,13 +63,12 @@ require('./streams/morganStreams')(logger)
 // check if we in development mode
 if (['dev', 'development'].indexOf(config.env)) {
   // add debug transport for `success`, `fail`, `debug` and `info`
-  logger.add(new DebugTransport({
+  logger.add(new DebugTransport(merge({
     format: combine(
       winston.format.splat(),
       customDebugFormat
-    ),
-    ...config.log.options
-  }))
+    )
+  }, config.log.options)))
 }
 
 module.exports = logger
