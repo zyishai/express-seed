@@ -17,9 +17,11 @@ module.exports = fn => (...args) => {
         }
 
     return p.catch(err => {
+        var callback = args.pop()
+
         // run error handler
-        if (args[2] instanceof Function) {
-            args[2](err)
+        if (callback instanceof Function) {
+            callback(err)
         }
 
         // this will return `then-able` object with breaks the

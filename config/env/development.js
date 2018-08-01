@@ -4,8 +4,6 @@ module.exports = {
       name: 'Facebook_Data',
       uri: process.env.MONGO_URI || 'mongodb://localhost:27017/facebook',
       options: {
-        autoIndex: true,
-        poolSize: 10,
         user: process.env.MONGO_USER || null,
         pass: process.env.MONGO_PASS || null,
         useNewUrlParser: true

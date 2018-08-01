@@ -1,6 +1,6 @@
 const path = require('path')
 const config = require('@app-config')
-const { merge } = require('lodash')
+const merge = require('lodash.merge')
 const winston = require('winston')
 const { combine } = winston.format
 const DebugTransport = require('./transports/DebugTransport')

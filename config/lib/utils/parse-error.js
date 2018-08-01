@@ -1,5 +1,5 @@
 const path = require('path')
-const { isError } = require('lodash')
+const isError = require('lodash.iserror')
 const stringify = require('stringify-object')
 
 /**

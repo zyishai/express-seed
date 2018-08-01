@@ -11,7 +11,15 @@
 
 const config = require('@app-config')
 const debug = require('debug')
-const { merge } = require('lodash')
+const merge = require('lodash.merge')
+
+const colors = {
+  green: 2,
+  red: 5,
+  orange: 6,
+  blue: 3,
+  cyan: 0
+}
 
 const stubs = {
   logHttpSuccess: () => {},
@@ -37,12 +45,12 @@ if (config.debug) {
   })
 
   // set log type colors
-  debugFns.logHttpSuccess.color = debug.colors[2] // green
-  debugFns.logHttpError.color = debug.colors[5] // red
-  debugFns.logAppError.color = debug.colors[5] // red
-  debugFns.logAppWarn.color = debug.colors[6] // orange
-  debugFns.logAppDebug.color = debug.colors[3] // blue
-  debugFns.logAppInfo.color = debug.colors[0] // cyan
+  debugFns.logHttpSuccess.color = debug.colors[colors.green]
+  debugFns.logHttpError.color = debug.colors[colors.red]
+  debugFns.logAppError.color = debug.colors[colors.red]
+  debugFns.logAppWarn.color = debug.colors[colors.orange]
+  debugFns.logAppDebug.color = debug.colors[colors.blue]
+  debugFns.logAppInfo.color = debug.colors[colors.cyan]
 }
 
 module.exports = merge(stubs, debugFns)

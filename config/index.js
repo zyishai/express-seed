@@ -1,5 +1,5 @@
 require('dotenv').config() // load .env file to `process.env`
-const { merge } = require('lodash')
+const merge = require('lodash.merge')
 const defaultConfig = require('./env/default')
 let environmentConfig
 
