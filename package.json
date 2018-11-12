@@ -1,34 +1,22 @@
 {
-  "name": "express-mongo-seed",
+  "name": "express-seed",
   "version": "1.0.0",
-  "description": "Seed for express app with MongoDB.",
+  "description": "Seed for express applications.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "author": "Yishai Zehavi (zehaviyishai@gmail.com)",
   "license": "ISC",
-  "_moduleAliases": {
-    "@root": ".",
-    "@app-utils": "config/lib/utils",
-    "@app-logger": "config/lib/logger",
-    "@app-config": "config",
-    "@app-lib": "config/lib",
-    "@app-public": "public",
-    "@app-api": "api",
-    "@app-logs": "logs",
-    "@app-models": "models"
-  },
+  "_moduleAliases": {},
   "dependencies": {
     "body-parser": "^1.18.3",
     "chalk": "^2.4.1",
     "compression": "^1.7.3",
     "connect-flash": "^0.1.1",
-    "connect-mongo": "^2.0.1",
     "cookie-parser": "^1.4.3",
     "csurf": "^1.9.0",
     "dotenv": "^6.0.0",
-    "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "glob": "^7.1.2",
@@ -39,13 +27,10 @@
     "method-override": "^3.0.0",
     "module-alias": "^2.1.0",
     "moment": "^2.22.2",
-    "mongoose": "^5.2.5",
     "morgan": "^1.9.0",
+    "pug": "^2.0.3",
     "serve-favicon": "^2.5.0",
     "stringify-object": "^3.2.2",
-    "supports-color": "^5.4.0",
-    "winston": "^3.0.0",
-    "winston-daily-rotate-file": "^3.3.0",
-    "winston-transport": "^4.2.0"
+    "supports-color": "^5.4.0"
   }
 }
