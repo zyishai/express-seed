@@ -1,3 +1,4 @@
 module.exports = {
-    clusters: false
+    app: {
+    }
 }

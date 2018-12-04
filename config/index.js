@@ -16,4 +16,6 @@ if (result.error) {
 const baseConfig = loadConfig('base');
 const envConfig = loadConfig(getEnvironment());
 
+baseConfig.app.env = getEnvironment();
+
 module.exports = merge(baseConfig, envConfig);
