@@ -75,7 +75,7 @@ describe('Seed config utilities - `loadConfig()` function', function() {
     })
     it('should throw an error if no matching configuration file found', function() {
         // set NODE_ENV to test.
-        process.env.NODE_ENV = 'test';
+        process.env.NODE_ENV = 'bla';
 
         assert.throws(utils.loadConfig.bind(null, utils.getEnvironment()));
     })
