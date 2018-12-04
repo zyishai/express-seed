@@ -1,6 +1,6 @@
 const assert = require('assert');
 
-describe('Development setup', function() {
+describe('Seed config - Development setup', function() {
     afterEach(function() {
         delete require.cache[require.resolve('./index')];
         delete require.cache[require.resolve('dotenv')];
@@ -14,12 +14,11 @@ describe('Development setup', function() {
         let config = require('./index');
 
         // check that config object is in correct shape
-        assert.equal(config.clusters, false);
-        assert.equal(config.env, 'development');
+        assert.equal(config.app.env, 'dev');
     })
 })
 
-describe('Production setup', function() {
+describe('Seed config - Production setup', function() {
     afterEach(function() {
         delete require.cache[require.resolve('./index')];
         delete require.cache[require.resolve('dotenv')];
@@ -33,7 +32,6 @@ describe('Production setup', function() {
         let config = require('./index');
 
         // check that config object is in correct shape
-        assert.equal(config.clusters, true);
-        assert.equal(config.env, 'production');
+        assert.equal(config.app.env, 'prod');
     })
 })

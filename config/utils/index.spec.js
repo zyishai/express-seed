@@ -2,7 +2,7 @@ const assert = require('assert');
 const utils = require('./index');
 let originalNodeEnv;
 
-describe('`getEnvironment()` function', function() {
+describe('Seed config utilities - `getEnvironment()` function', function() {
     // save original value of NODE_ENV.
     before(function() {
         originalNodeEnv = process.env.NODE_ENV;
@@ -47,7 +47,7 @@ describe('`getEnvironment()` function', function() {
     })
 })
 
-describe('`loadConfig()` function', function() {
+describe('Seed config utilities - `loadConfig()` function', function() {
     // save original value of NODE_ENV.
         before(function() {
         originalNodeEnv = process.env.NODE_ENV;
@@ -71,7 +71,7 @@ describe('`loadConfig()` function', function() {
 
         const config = utils.loadConfig(utils.getEnvironment());
 
-        assert.equal(config.clusters, false);
+        assert.equal(!!config.app.clusters, false);
     })
     it('should throw an error if no matching configuration file found', function() {
         // set NODE_ENV to test.
