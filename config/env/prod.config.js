@@ -3,7 +3,10 @@ const fs = require('fs');
 
 module.exports = {
     app: {
-        clusters: true,
+        clusters: {
+            worker: path.join(process.cwd(), 'lib', 'worker.js'),
+            accessKey: process.env.ACCESS_KEY || '1234'
+        },
         compression: {
             level: 9
         },
